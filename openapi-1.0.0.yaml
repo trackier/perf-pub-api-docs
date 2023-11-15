@@ -28,12 +28,14 @@ servers:
   - url: 'https://api.trackier.com'
     description: 'Base URL: https://api.trackier.com'
 tags:
+  - name: Advertiser Campaigns
+  - name: Advertiser Performance Report
   - name: Campaign
-    description: ' <h4>GET the next page of results</h4> You can then make a call to any page by just page number <code>?page={5}</code>. The page parameter in the next link is 5, so the results will show campagians of  page 5. The call will be as follows: <br/>eg. <code>/v2/publisher/campaigns?limit={limit}&page={5}</code> <br/> <br/> <h4>How do I know if there are more pages?</h4> When the response doesn’t contain a campaign data in results, you know that you’ve reached the end. '
+  - name: Conversion Logs
   - name: Coupon Codes
-    description: ' <h4>GET the next page of results</h4> You can then make a call to any page by using the page token <code>?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>. If not passed, the API returns data of the first page. In the response body, the <code>pageToken</code> to access the next page is provided. The call will be as follows: <br/>eg. <code>/v2/publisher/coupons?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code> <br/> <br/> <h4>How do I know if there are more pages?</h4> When the response doesn’t contain the coupon data in results, you know that you’ve reached the end. '
   - name: Deals
-    description: ' <h4>GET the next page of results</h4> You can then make a call to any page by using the page token <code>?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>. If not passed, the API returns data of the first page. In the response body, the <code>pageToken</code> to access the next page is provided. The call will be as follows: <br/>eg. <code>/v2/publisher/deals?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code> <br/> <br/> <h4>How do I know if there are more pages?</h4> When the response doesn’t contain the deals data in results, you know that you’ve reached the end. '
+  - name: Performance Report
+  - name: Publisher Profile
 x-tagGroups:
   - name: Publisher
     tags:
@@ -121,8 +123,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      tags:
-        - Publisher Profile Edit
       summary: Edit Publisher Profile
       description: Updates Publisher Profile
       requestBody:
@@ -151,6 +151,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      tags:
+        - Publisher Profile
   /v2/publishers/coupons:
     get:
       tags:
@@ -205,8 +207,6 @@ paths:
                 $ref: '#/components/schemas/Error'
   '/v2/publishers/campaign/{id}/access':
     post:
-      tags:
-        - Campaign Request Access
       summary: Create campaign request access
       description: Create campaign request access
       operationId: campaign-request-access
@@ -235,10 +235,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      tags:
+        - Campaign
   '/v2/publishers/:pubId/campaignsCount':
     get:
-      tags:
-        - Allowed Campaign Count
       summary: Get campaign access count for publisher
       description: Get campaign access count for publisher
       operationId: campaign-count
@@ -260,6 +260,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      tags:
+        - Campaign
   /v2/publishers/reports:
     get:
       summary: Performance Report
@@ -329,8 +331,6 @@ paths:
                   errors:
                     $ref: '#/components/schemas/Error'
       operationId: get-v2-reports-custom
-      security:
-        - API Key Param: []
       parameters:
         - schema:
             type: array
@@ -348,15 +348,6 @@ paths:
           name: camp_ids
           description: 'To filter the report for a particular campaign add campaign id in query parameters like: &camp_ids[]=16&camp_ids[]=30'
         - schema:
-            type: array
-          in: query
-          name: pub_ids
-        - schema:
-            type: array
-            description: Advertiser IDs for filter
-          in: query
-          name: adv_ids
-        - schema:
             type: string
           in: query
           name: start
@@ -366,6 +357,8 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+      security:
+        - API Key: []
   /v2/publishers/conversions:
     get:
       summary: Conversion Logs
@@ -485,7 +478,7 @@ paths:
                         device: mobile
                         created: '2023-06-02T01:28:40.000Z'
                         status: approved
-                        external_offer_id: "32"
+                        external_offer_id: '32'
                         campaign_id: 2
                         campaign_name: string
                         goal_name: Install
@@ -504,8 +497,6 @@ paths:
                   errors:
                     $ref: '#/components/schemas/Error'
       operationId: get-v2-network-pubConversions
-      security:
-        - API Key Param: []
       parameters:
         - schema:
             type: integer
@@ -529,6 +520,8 @@ paths:
           name: end
           description: Report end date in YYYY-MM-DD format
           required: true
+      security:
+        - API Key: []
   /v2/publishers/reports-kpi:
     get:
       summary: Performance Report GET KPI
@@ -588,11 +581,9 @@ paths:
                     $ref: '#/components/schemas/Error'
       operationId: get-v2-reports-get-kpi
       security:
-        - API Key Param: []
+        - API Key: []
   /v2/publishers/categories:
     get:
-      tags:
-        - Publisher Categories
       summary: Fetch All Categories
       operationId: Publisher-Categories
       responses:
@@ -624,12 +615,12 @@ paths:
                   errors:
                     $ref: '#/components/schemas/Error'
       description: Use this endpoint to fetch all Publisher Categories
+      tags:
+        - Campaign
       security:
-        - API Key Param: []
+        - API Key: []
   /v2/advertisers/campaigns:
     get:
-      tags:
-        - Camapigns
       summary: Fetch All Campaigns
       description: Returns all Advertiser campaigns
       operationId: adv-campaigns
@@ -652,11 +643,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FindAllCampaignError'
+      tags:
+        - Advertiser Campaigns
+      security:
+        - API Key: []
   /v2/advertisers/reports:
     get:
       summary: Performance Report
-      tags:
-        - Advertiser Performance Report
       description: |-
         Performance Report
 
@@ -707,8 +700,6 @@ paths:
                   errors:
                     $ref: '#/components/schemas/Error'
       operationId: get-v2-advertisers-report-custom
-      security:
-        - API Key Param: []
       parameters:
         - schema:
             type: array
@@ -735,6 +726,10 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
+      tags:
+        - Advertiser Performance Report
+      security:
+        - API Key: []
 components:
   schemas:
     ApiResponse:
@@ -826,11 +821,11 @@ components:
       properties:
         min:
           type: string
-          example: "4.1"
+          example: '4.1'
           description: Minimum OS version
         max:
           type: string
-          example: "9"
+          example: '9'
           description: Maximum OS version
     PublisherCampaign:
       type: object
@@ -846,48 +841,51 @@ components:
         description:
           description: Campaign Description
           type: string
-          nullable: true
           example: AppAttribution mobile app platform
+          nullable: true
         kpi:
           description: Campaign kpi
           type: string
-          nullable: true
           example: mobile app platform
+          nullable: true
         currency:
           description: <span class='description'>If currency is present then the payout shown by the API for that campaign is in that currency.</span> <span class='description'>If no currency then it should be assumed as USD and accordingly payout is also in USD</span>
           type: string
-          nullable: true
           example: USD
           enum:
             - INR
             - USD
             - EUR
+          nullable: true
         categories:
           description: Campaign categories
           type: array
-          nullable: true
           example:
             - Technology
             - Bollynews
+          nullable: true
+          items: {}
         subIdsBlock:
           description: List of Blocked Sub IDs
           type: array
-          nullable: true
           example:
             - XF152asd
             - TF152asd
+          nullable: true
+          items: {}
         subIdsAllow:
           description: List of Allowed Sub IDs
           type: array
-          nullable: true
           example:
             - XF152asd
             - TF152asd
+          nullable: true
+          items: {}
         preview_url:
           description: Destination url of the campaign
           type: string
-          nullable: true
           example: 'https://play.google.com/store/apps/details?id=io.appattribution.device'
+          nullable: true
         model:
           description: '<span class=''description''>Also if model is CPS then the payout is in percentage (Example: if payout = 70 and model = CPS, then it means payout is 70% of the sale amount not $70)</span>'
           type: string
@@ -901,27 +899,31 @@ components:
         device:
           description: List of all supported devices
           type: array
-          nullable: true
-          enum:
-            - mobile
-            - tablet
-            - desktop
-            - all
+          items:
+            x-stoplight:
+              id: 6k9z4r9knvq8q
+            enum:
+              - mobile
+              - desktop
+              - tablet
+              - all
         flow:
           description: Conversion Flow
           type: array
-          nullable: true
           example:
             - MO Flow
+          nullable: true
+          items: {}
         os:
           description: List of all operating system supported
           type: array
-          nullable: true
-          enum:
-            - android
-            - ios
-            - windowsphone
-            - all
+          items:
+            x-stoplight:
+              id: zjaxz8egkf745
+            enum:
+              - android
+              - ios
+              - all
         os_version:
           description: List of all supported os version
           type: object
@@ -929,34 +931,26 @@ components:
           properties:
             ios:
               type: object
-              nullable: true
-              description: iOS OS supported version information
               $ref: '#/components/schemas/OsVer'
             android:
               type: object
-              nullable: true
-              description: Android OS supported version information
               $ref: '#/components/schemas/OsVer'
             windowsphone:
               type: object
-              nullable: true
-              description: Windows Phone OS supported version information
               $ref: '#/components/schemas/OsVer'
             all:
               type: object
-              nullable: true
-              description: All OS supported version information
               $ref: '#/components/schemas/OsVer'
         app_id:
           description: 'Application id, e.g com.example.android (Android) or id4298877253 (iOS)'
           type: string
-          nullable: true
           example: io.appattribution.app
+          nullable: true
         app_name:
           description: Application name
           type: string
-          nullable: true
           example: AppAttribution - Mobile App Tracking
+          nullable: true
         tracking_link:
           description: Tracking link of the campaign/offer
           type: string
@@ -967,33 +961,37 @@ components:
           example: 'https://demo.trackier.net/imp?campaign_id=20931&pub_id=31'
         bot_check_url:
           description: Botman Bot Check URL
-          nullable: true
           type: string
           example: 'https://a762.botninja.js?https://demo.trackier.net/5acdefeadcxwe3dsad'
+          nullable: true
         countries:
           description: List of all supported countries
           type: array
           example:
             - US
             - IN
+          items: {}
         isps:
           description: Allowed ISPs List
           type: array
           example:
             - SpectraNet
             - ASN
+          items: {}
         citiesInclude:
           description: Allowed  Cities List
           type: array
           example:
             - Kolkata
             - Delhi
+          items: {}
         citiesExclude:
           description: Blocked Cities List
           type: array
           example:
             - Kolkata
             - Delhi
+          items: {}
         defaultGoal:
           description: Default Goal name
           type: string
@@ -1429,3 +1427,5 @@ components:
       type: apiKey
       name: X-Api-Key
       in: header
+security:
+  - API Key: []
