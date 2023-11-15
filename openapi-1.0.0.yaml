@@ -1,98 +1,39 @@
 openapi: 3.0.0
 info:
   title: Trackier Publisher API Docs
-  description: >
+  description: |
     # Introduction
-
-    The Trackier API is designed for developers, engineers, or anyone else who’s
-    comfortable creating custom-coded solutions or integrating with RESTful APIs.
-
+    The Trackier API is designed for developers, engineers, or anyone else who’s comfortable creating custom-coded solutions or integrating with RESTful APIs.
     Base URL
       <li>URL : https://api.trackier.com</li>
       <li>Description : Main server</li>
 
     # HTTP Status Code
-
-    Review all global errors for the Trackier API so you can get back to work fast.
-    <hr><b>401 - API Key Invalid</b>
-    <br>Your API key may be invalid, or you’ve
-    attempted to access the wrong data center.
-    <br>The current request requires user authentication.
-    For example, the user does not have the necessary credentials.
-    <hr><b>403 - No permissions visit this resource</b>
-    <br>You are not permitted to access this resource.
-    <br>The request was a valid request, but the server is refusing to respond to it.
-    For example, the user does not have the necessary permissions for the resource.
-    <hr><b>404 - Resource Not Found</b>
-    <br>The requested resource could not be found.
-    <br>This error tells you a specific resource doesn’t exist.
-    It’s possible that the resource has been moved or deleted, or that there’s a typo
-    in your request.<hr><b>500 - Server error, Please contact administrator</b>
-    <br>A generic error message, given when an unexpected condition was encountered and
-    no more specific message is suitable.Please contact Support for more information.
-    <br>This error lets you know our servers have experienced a problem.
-    Although this is rare, please contact support@trackier.com to let us know that
-    you’ve encountered this error
-
+    Review all global errors for the Trackier API so you can get back to work fast. <hr><b>401 - API Key Invalid</b> <br>Your API key may be invalid, or you’ve attempted to access the wrong data center. <br>The current request requires user authentication. For example, the user does not have the necessary credentials. <hr><b>403 - No permissions visit this resource</b> <br>You are not permitted to access this resource. <br>The request was a valid request, but the server is refusing to respond to it. For example, the user does not have the necessary permissions for the resource. <hr><b>404 - Resource Not Found</b> <br>The requested resource could not be found. <br>This error tells you a specific resource doesn’t exist. It’s possible that the resource has been moved or deleted, or that there’s a typo in your request.<hr><b>500 - Server error, Please contact administrator</b> <br>A generic error message, given when an unexpected condition was encountered and no more specific message is suitable.Please contact Support for more information. <br>This error lets you know our servers have experienced a problem. Although this is rare, please contact support@trackier.com to let us know that you’ve encountered this error
     # Authentication
-
     Trackier API endpoints can be authenticated via Header:
       - API Key
 
     # Admin API
-
     Admin API can be found here [Admin API](/admin?v=2)
-
-  version: 'v2'
+  version: v2
   termsOfService: 'https://trackier.com/terms-of-service/'
   contact:
+    url: 'https://trackier.com'
     name: API Support
     email: support@trackier.com
   x-logo:
     url: 'https://trackier.com/blog/wp-content/uploads/2019/02/dark-logo.png'
-
 servers:
-  - url: 'https://api.trackier.com/'
+  - url: 'https://api.trackier.com'
     description: 'Base URL: https://api.trackier.com'
-
 tags:
   - name: Campaign
-    description: '
-    <h4>GET the next page of results</h4>
-    You can then make a call to any page by just page number <code>?page={5}</code>. The page parameter in the next link is 5, so the results will show campagians of  page 5.
-    The call will be as follows:
-    <br/>eg. <code>/v2/publisher/campaigns?limit={limit}&page={5}</code>
-    <br/>
-    <br/>
-    <h4>How do I know if there are more pages?</h4>
-    When the response doesn’t contain a campaign data in results, you know that you’ve reached the end.
-    '
-  - name: 'Coupon Codes'
-    description: '
-    <h4>GET the next page of results</h4>
-    You can then make a call to any page by using the page token <code>?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>. If not passed, the API returns data of the first page.
-    In the response body, the <code>pageToken</code> to access the next page is provided.
-    The call will be as follows:
-    <br/>eg. <code>/v2/publisher/coupons?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>
-    <br/>
-    <br/>
-    <h4>How do I know if there are more pages?</h4>
-    When the response doesn’t contain the coupon data in results, you know that you’ve reached the end.
-    '
-
-  - name: 'Deals'
-    description: '
-    <h4>GET the next page of results</h4>
-    You can then make a call to any page by using the page token <code>?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>. If not passed, the API returns data of the first page.
-    In the response body, the <code>pageToken</code> to access the next page is provided.
-    The call will be as follows:
-    <br/>eg. <code>/v2/publisher/deals?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>
-    <br/>
-    <br/>
-    <h4>How do I know if there are more pages?</h4>
-    When the response doesn’t contain the deals data in results, you know that you’ve reached the end.
-    '
-
+    description: ' <h4>GET the next page of results</h4> You can then make a call to any page by just page number <code>?page={5}</code>. The page parameter in the next link is 5, so the results will show campagians of  page 5. The call will be as follows: <br/>eg. <code>/v2/publisher/campaigns?limit={limit}&page={5}</code> <br/> <br/> <h4>How do I know if there are more pages?</h4> When the response doesn’t contain a campaign data in results, you know that you’ve reached the end. '
+  - name: Coupon Codes
+    description: ' <h4>GET the next page of results</h4> You can then make a call to any page by using the page token <code>?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>. If not passed, the API returns data of the first page. In the response body, the <code>pageToken</code> to access the next page is provided. The call will be as follows: <br/>eg. <code>/v2/publisher/coupons?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code> <br/> <br/> <h4>How do I know if there are more pages?</h4> When the response doesn’t contain the coupon data in results, you know that you’ve reached the end. '
+  - name: Deals
+    description: ' <h4>GET the next page of results</h4> You can then make a call to any page by using the page token <code>?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code>. If not passed, the API returns data of the first page. In the response body, the <code>pageToken</code> to access the next page is provided. The call will be as follows: <br/>eg. <code>/v2/publisher/deals?pageToken={eyJwYWdlIjoxLCJsaW1pdCI6MTAwMH0}</code> <br/> <br/> <h4>How do I know if there are more pages?</h4> When the response doesn’t contain the deals data in results, you know that you’ve reached the end. '
 x-tagGroups:
   - name: Publisher
     tags:
@@ -110,23 +51,22 @@ x-tagGroups:
     tags:
       - Camapigns
       - Advertiser Performance Report
-
 paths:
-  '/v2/publisher/campaigns':
+  /v2/publisher/campaigns:
     get:
       tags:
         - Campaign
       summary: Fetch All Campaigns
       description: |-
-          Returns all publisher campaigns
+        Returns all publisher campaigns
 
-          Goal: Any additional event added in the campaign is goal
+        Goal: Any additional event added in the campaign is goal
 
-          Default Goal: Default event of the campaign
-          
-          *Note: There will be no goal value in default goal, only goal have the goal values*.
+        Default Goal: Default event of the campaign
 
-          **Rate Limit: 5 req/sec**
+        *Note: There will be no goal value in default goal, only goal have the goal values*.
+
+        **Rate Limit: 5 req/sec**
       operationId: campaigns
       parameters:
         - in: query
@@ -157,8 +97,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  
-  '/v2/publishers/profile':
+  /v2/publishers/profile:
     get:
       tags:
         - Publisher Profile
@@ -168,7 +107,7 @@ paths:
       responses:
         '200':
           description: Successful operation
-          content: 
+          content:
             application/json:
               schema:
                 type: object
@@ -177,7 +116,7 @@ paths:
                     $ref: '#/components/schemas/PublisherProfile'
         '400':
           description: Bad Request
-          content: 
+          content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
@@ -195,7 +134,7 @@ paths:
       responses:
         '200':
           description: Successful operation
-          content: 
+          content:
             application/json:
               schema:
                 type: object
@@ -208,12 +147,11 @@ paths:
                     $ref: '#/components/schemas/PublisherProfile'
         '400':
           description: Bad Request
-          content: 
+          content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  
-  '/v2/publishers/coupons':
+  /v2/publishers/coupons:
     get:
       tags:
         - Coupon Codes
@@ -239,8 +177,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
-  '/v2/publishers/deals':
+  /v2/publishers/deals:
     get:
       tags:
         - Deals
@@ -266,7 +203,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  
   '/v2/publishers/campaign/{id}/access':
     post:
       tags:
@@ -295,11 +231,10 @@ paths:
                     type: string
         '400':
           description: Bad Request
-          content: 
+          content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  
   '/v2/publishers/:pubId/campaignsCount':
     get:
       tags:
@@ -321,29 +256,28 @@ paths:
                     type: integer
         '400':
           description: Bad Request
-          content: 
+          content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  
-  '/v2/publishers/reports':
+  /v2/publishers/reports:
     get:
       summary: Performance Report
       tags:
-          - Performance Report
+        - Performance Report
       description: |-
-          Performance Report
+        Performance Report
 
-          Default Grouping: campaign_name, campaign_id
-          Default KPI in response: clicks, approvedConversions, payout, revenue, profit
+        Default Grouping: campaign_name, campaign_id
+        Default KPI in response: clicks, approvedConversions, payout, revenue, profit
 
-          To update the report grouping or kpi:
-          - &group[]=campaign_id&group[]=publisher_id
-          - List of grouping parameters can be found below
-          - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
-          - List of KPI can be found in query parameter section below
+        To update the report grouping or kpi:
+        - &group[]=campaign_id&group[]=publisher_id
+        - List of grouping parameters can be found below
+        - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
+        - List of KPI can be found in query parameter section below
 
-          **Rate Limit: 200 req/min**
+        **Rate Limit: 200 req/min**
       responses:
         '200':
           description: OK
@@ -419,6 +353,7 @@ paths:
           name: pub_ids
         - schema:
             type: array
+            description: Advertiser IDs for filter
           in: query
           name: adv_ids
         - schema:
@@ -431,13 +366,12 @@ paths:
           in: query
           name: end
           description: Report end date in YYYY-MM-DD format
-  '/v2/publishers/conversions':
+  /v2/publishers/conversions:
     get:
       summary: Conversion Logs
       tags:
-          - Conversion Logs
-      description: |-
-          Conversion Logs
+        - Conversion Logs
+      description: Conversion Logs
       responses:
         '200':
           description: OK
@@ -456,7 +390,7 @@ paths:
                         click_id:
                           type: string
                         source:
-                          type: integer
+                          type: string
                         elapsed_time:
                           type: integer
                         city:
@@ -488,13 +422,15 @@ paths:
                         os:
                           type: string
                         goal_id:
-                          type: string 
+                          type: string
+                          nullable: true
                         txn_id:
                           type: string
+                          nullable: true
                         currency:
                           type: string
                         payout:
-                          type: integer
+                          type: number
                         orig_sale_currency:
                           type: string
                         country:
@@ -504,7 +440,7 @@ paths:
                         device:
                           type: string
                         created:
-                          type: string 
+                          type: string
                         status:
                           type: string
                         external_offer_id:
@@ -512,7 +448,7 @@ paths:
                         campaign_id:
                           type: integer
                         campaign_name:
-                          type: string 
+                          type: string
                         goal_name:
                           type: string
                         url_title:
@@ -528,36 +464,36 @@ paths:
                         city: Philadelphia
                         region: Pennsylvania
                         isp: Comcast Cable
-                        p1: ""
-                        p2: ""
-                        p3: ""
-                        p4: ""
-                        p5: ""
-                        p6: ""
-                        p7: ""
-                        p8: ""
-                        p9: ""
-                        p10: ""
+                        p1: ''
+                        p2: ''
+                        p3: ''
+                        p4: ''
+                        p5: ''
+                        p6: ''
+                        p7: ''
+                        p8: ''
+                        p9: ''
+                        p10: ''
                         os: Android 11.0
-                        goal_id: 
-                        txn_id:
+                        goal_id: null
+                        txn_id: null
                         currency: USD
                         payout: 0
                         orig_sale_currency: USD
                         country: US
                         browser: Chrome 97
                         device: mobile
-                        created: 2023-06-02T01:28:40.000Z
+                        created: '2023-06-02T01:28:40.000Z'
                         status: approved
-                        external_offer_id: 32
+                        external_offer_id: "32"
                         campaign_id: 2
                         campaign_name: string
                         goal_name: Install
                         url_title: Default
-                    pagination : 
-                        perPage: 100
-                        currentPage: 1
-                        total: 1000
+                    pagination:
+                      perPage: 100
+                      currentPage: 1
+                      total: 1000
         '400':
           description: Bad Request
           content:
@@ -593,14 +529,12 @@ paths:
           name: end
           description: Report end date in YYYY-MM-DD format
           required: true
-  '/v2/publishers/reports-kpi':
+  /v2/publishers/reports-kpi:
     get:
       summary: Performance Report GET KPI
       tags:
-          - Performance Report 
-      description: |-
-          Performance Report GET KPI Method
-  
+        - Performance Report
+      description: Performance Report GET KPI Method
       responses:
         '200':
           description: OK
@@ -617,41 +551,32 @@ paths:
                     type: object
                   kpiMap:
                     type: object
-                    
               examples:
                 example-1:
                   value:
                     allowedGrouping:
-                       [
-                        "campaign_name",
-                        "campaign_id",
-                        "campaign_long_id",
-                        "campaign_status"
-                       ] 
+                      - campaign_name
+                      - campaign_id
+                      - campaign_long_id
+                      - campaign_status
                     allowedKpi:
-                       [
-                        "uniqueClicks",
-                        "clicks",
-                        "grossClicks",
-                        "impressions",
-                        "payout"
-                       ] 
+                      - uniqueClicks
+                      - clicks
+                      - grossClicks
+                      - impressions
+                      - payout
                     groupingMap:
-                      {
-                        "campaign_name": "Campaign",
-                        "campaign_id": "Campaign ID",
-                        "campaign_long_id": "Campaign Long ID",
-                        "campaign_status": "Campaign Status",
-                        "campaign_geo": "Campaign GEO",
-                      }
+                      campaign_name: Campaign
+                      campaign_id: Campaign ID
+                      campaign_long_id: Campaign Long ID
+                      campaign_status: Campaign Status
+                      campaign_geo: Campaign GEO
                     kpiMap:
-                      {
-                        "uniqueClicks": "Unique Clicks",
-                        "clicks": "Clicks",
-                        "grossClicks": "Gross Clicks",
-                        "impressions": "Impressions",
-                        "payout": "Payout",
-                      }
+                      uniqueClicks: Unique Clicks
+                      clicks: Clicks
+                      grossClicks: Gross Clicks
+                      impressions: Impressions
+                      payout: Payout
         '400':
           description: Bad Request
           content:
@@ -664,13 +589,12 @@ paths:
       operationId: get-v2-reports-get-kpi
       security:
         - API Key Param: []
-     
-  '/v2/publishers/categories':
-   get:
+  /v2/publishers/categories:
+    get:
       tags:
         - Publisher Categories
       summary: Fetch All Categories
-      operationId: Publisher Categories
+      operationId: Publisher-Categories
       responses:
         '200':
           description: Successful operation
@@ -689,7 +613,7 @@ paths:
                         name:
                           type: string
                         created:
-                          type: string           
+                          type: string
         '400':
           description: Bad Request
           content:
@@ -699,16 +623,15 @@ paths:
                 properties:
                   errors:
                     $ref: '#/components/schemas/Error'
-      description: Use this endpoint to fetch all Publisher Categories              
+      description: Use this endpoint to fetch all Publisher Categories
       security:
-        - API Key Param: [] 
-
-  '/v2/advertisers/campaigns':
-   get:
+        - API Key Param: []
+  /v2/advertisers/campaigns:
+    get:
       tags:
         - Camapigns
       summary: Fetch All Campaigns
-      description: Returns all Advetriser campaigns
+      description: Returns all Advertiser campaigns
       operationId: adv-campaigns
       parameters:
         - in: query
@@ -716,7 +639,6 @@ paths:
           description: Advetriser API Key
           schema:
             type: string
-          
       responses:
         '200':
           description: Successful operation
@@ -730,22 +652,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FindAllCampaignError'
-  '/v2/advertisers/reports':
+  /v2/advertisers/reports:
     get:
       summary: Performance Report
       tags:
         - Advertiser Performance Report
       description: |-
-          Performance Report
+        Performance Report
 
-          Default Grouping: campaign_name, campaign_id
-          Default KPI in response: clicks, approvedConversions, payout, revenue, profit
+        Default Grouping: campaign_name, campaign_id
+        Default KPI in response: clicks, approvedConversions, payout, revenue, profit
 
-          To update the report grouping or kpi:
-          - &group[]=campaign_id
-          - List of grouping parameters can be found below
-          - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
-          - List of KPI can be found in query parameter section below
+        To update the report grouping or kpi:
+        - &group[]=campaign_id
+        - List of grouping parameters can be found below
+        - &kpi[]=clicks&kpi[]=rejectedClicks&kpi[]=grossClicks
+        - List of KPI can be found in query parameter section below
       responses:
         '200':
           description: OK
@@ -786,7 +708,7 @@ paths:
                     $ref: '#/components/schemas/Error'
       operationId: get-v2-advertisers-report-custom
       security:
-       - API Key Param: []
+        - API Key Param: []
       parameters:
         - schema:
             type: array
@@ -830,30 +752,36 @@ components:
       properties:
         payout:
           description: Payout of the campaign
-          type: integer
+          type: number
           format: float
           example: 1.87
         fixedPayout:
           description: Payout of the campaign
-          type: integer
+          type: number
           format: float
           example: 1.87
         geo:
           description: List of all Payout geo
           type: array
-          example: ['US', 'IN']
+          example:
+            - US
+            - IN
         city:
           description: List of Cities
           type: array
-          example: ['Mohali']
+          example:
+            - Mohali
         region:
           description: List of Region
           type: array
-          example: ['Punjab']
+          example:
+            - Punjab
         allowedValues:
           description: List of Allowed Values corresponding to the variable
           type: array
-          example: ['sub1-testing', 'sub2-testing']
+          example:
+            - sub1-testing
+            - sub2-testing
         variable:
           type: string
           example: source
@@ -869,7 +797,6 @@ components:
             - p9
             - p10
             - source
-
     Goal:
       type: object
       properties:
@@ -899,11 +826,11 @@ components:
       properties:
         min:
           type: string
-          example: 4.1
+          example: "4.1"
           description: Minimum OS version
         max:
           type: string
-          example: 9.0
+          example: "9"
           description: Maximum OS version
     PublisherCampaign:
       type: object
@@ -927,10 +854,9 @@ components:
           nullable: true
           example: mobile app platform
         currency:
-          description: <span class='description'>If currency is present then the payout shown by the API for that campaign is in that currency.</span>
-                       <span class='description'>If no currency then it should be assumed as USD and accordingly payout is also in USD</span>
+          description: <span class='description'>If currency is present then the payout shown by the API for that campaign is in that currency.</span> <span class='description'>If no currency then it should be assumed as USD and accordingly payout is also in USD</span>
           type: string
-          nullable : true
+          nullable: true
           example: USD
           enum:
             - INR
@@ -940,24 +866,30 @@ components:
           description: Campaign categories
           type: array
           nullable: true
-          example: [Technology, Bollynews]
+          example:
+            - Technology
+            - Bollynews
         subIdsBlock:
           description: List of Blocked Sub IDs
           type: array
           nullable: true
-          example: [XF152asd, TF152asd]
+          example:
+            - XF152asd
+            - TF152asd
         subIdsAllow:
           description: List of Allowed Sub IDs
           type: array
           nullable: true
-          example: [XF152asd, TF152asd]
+          example:
+            - XF152asd
+            - TF152asd
         preview_url:
           description: Destination url of the campaign
           type: string
           nullable: true
-          example: https://play.google.com/store/apps/details?id=io.appattribution.device
+          example: 'https://play.google.com/store/apps/details?id=io.appattribution.device'
         model:
-          description: "<span class='description'>Also if model is CPS then the payout is in percentage (Example: if payout = 70 and model = CPS, then it means payout is 70% of the sale amount not $70)</span>"
+          description: '<span class=''description''>Also if model is CPS then the payout is in percentage (Example: if payout = 70 and model = CPS, then it means payout is 70% of the sale amount not $70)</span>'
           type: string
           example: cpi
           enum:
@@ -970,7 +902,6 @@ components:
           description: List of all supported devices
           type: array
           nullable: true
-          example: ['mobile', 'tablet']
           enum:
             - mobile
             - tablet
@@ -980,12 +911,12 @@ components:
           description: Conversion Flow
           type: array
           nullable: true
-          example: ['MO Flow']
+          example:
+            - MO Flow
         os:
           description: List of all operating system supported
           type: array
           nullable: true
-          example: ['android']
           enum:
             - android
             - ios
@@ -1017,7 +948,7 @@ components:
               description: All OS supported version information
               $ref: '#/components/schemas/OsVer'
         app_id:
-          description: Application id, e.g com.example.android (Android) or id4298877253 (iOS)
+          description: 'Application id, e.g com.example.android (Android) or id4298877253 (iOS)'
           type: string
           nullable: true
           example: io.appattribution.app
@@ -1029,32 +960,40 @@ components:
         tracking_link:
           description: Tracking link of the campaign/offer
           type: string
-          example: https://trk.trackier.com/5acdefeadcxwe3dsad?p1={your-transaction-id}&source={your-sub-aff-id}
+          example: 'https://trk.trackier.com/5acdefeadcxwe3dsad?p1={your-transaction-id}&source={your-sub-aff-id}'
         impressionUrl:
           description: Impression URL of the campaign/offer
           type: string
-          example: https://demo.trackier.net/imp?campaign_id=20931&pub_id=31
+          example: 'https://demo.trackier.net/imp?campaign_id=20931&pub_id=31'
         bot_check_url:
           description: Botman Bot Check URL
           nullable: true
           type: string
-          example: https://a762.botninja.js?https://demo.trackier.net/5acdefeadcxwe3dsad
+          example: 'https://a762.botninja.js?https://demo.trackier.net/5acdefeadcxwe3dsad'
         countries:
           description: List of all supported countries
           type: array
-          example: ['US', 'IN']
+          example:
+            - US
+            - IN
         isps:
           description: Allowed ISPs List
           type: array
-          example: ['SpectraNet', 'ASN']
+          example:
+            - SpectraNet
+            - ASN
         citiesInclude:
           description: Allowed  Cities List
           type: array
-          example: ['Kolkata', 'Delhi']
+          example:
+            - Kolkata
+            - Delhi
         citiesExclude:
           description: Blocked Cities List
           type: array
-          example: ['Kolkata', 'Delhi']
+          example:
+            - Kolkata
+            - Delhi
         defaultGoal:
           description: Default Goal name
           type: string
@@ -1083,15 +1022,14 @@ components:
               type: string
               example: conversion
             daily:
-              type: string
+              type: number
               example: 0
             monthly:
-              type: string
+              type: number
               example: 928
             lifetime:
-              type: string
+              type: number
               example: 0
-
     Error:
       type: object
       properties:
@@ -1110,7 +1048,6 @@ components:
               description: Error message
               type: string
               example: Invalid API Key
-
     PublisherProfile:
       type: object
       properties:
@@ -1128,7 +1065,6 @@ components:
           type: string
         id:
           type: string
-    
     ProfileEdit:
       type: object
       properties:
@@ -1138,7 +1074,6 @@ components:
           type: string
         company:
           type: string
-
     Creatives:
       type: object
       properties:
@@ -1158,7 +1093,7 @@ components:
         full_url:
           description: Full URL of the file
           type: string
-          example: https://static.vnative.co/images/5b505e7d8213e.png
+          example: 'https://static.vnative.co/images/5b505e7d8213e.png'
         dimensions:
           description: Creatives dimensions
           type: object
@@ -1176,7 +1111,6 @@ components:
               format: integer
               nullable: true
               example: 400
-
     PublisherCampaignData:
       type: object
       properties:
@@ -1201,7 +1135,6 @@ components:
               format: integer
               description: Total number of campaigns
               example: 251
-
     PublisherCouponCodeData:
       type: object
       properties:
@@ -1235,7 +1168,6 @@ components:
         pageToken:
           type: string
           description: Token to access next page
-
     PublisherDealData:
       type: object
       properties:
@@ -1262,7 +1194,6 @@ components:
         pageToken:
           type: string
           description: Token to access next page
-
     AdvertiserCampaign:
       type: object
       properties:
@@ -1291,9 +1222,9 @@ components:
           items:
             type: string
         flow:
-          type: array  
+          type: array
           items:
-            type: string                               
+            type: string
         title:
           type: string
           items:
@@ -1312,66 +1243,66 @@ components:
             - paused
             - disabled
             - expired
-        cshp: 
+        cshp:
           type: string
           example: approved
-        dcla: 
+        dcla:
           type: string
           example: none
-        extOfferId: 
+        extOfferId:
           type: string
         created:
           type: string
           format: date-time
         modified:
           type: string
-          format: date-time 
+          format: date-time
         payouts:
           type: array
           items:
-              type: object
-              properties:
-                region:
-                  type: array
-                  items:
-                    type: string
-                city:
-                  type: array
-                  items:
-                    type: string
-                _id:
+            type: object
+            properties:
+              region:
+                type: array
+                items:
                   type: string
-                model:
+              city:
+                type: array
+                items:
                   type: string
-                revenue:
-                  type: number
-                  minimum: 0
-                created:
+              _id:
+                type: string
+              model:
+                type: string
+              revenue:
+                type: number
+                minimum: 0
+              created:
+                type: string
+              currency:
+                type: string
+              campaignId:
+                type: string
+              landingPages:
+                type: array
+                items:
                   type: string
-                currency:
-                  type: string  
-                campaignId:
+              pubIds:
+                type: array
+                items:
                   type: string
-                landingPages:
-                  type: array
-                  items:
-                    type: string
-                pubIds:
-                  type: array
-                  items:
-                    type: string
-                payout:
-                  type: number
-                  minimum: 0
-                geo:
-                  type: array
-                  items:
-                    type: string
-                allowedValues:
-                  type: array
-                  uniqueItems: true
-                  items:
-                    type: string
+              payout:
+                type: number
+                minimum: 0
+              geo:
+                type: array
+                items:
+                  type: string
+              allowedValues:
+                type: array
+                uniqueItems: true
+                items:
+                  type: string
         creatives:
           description: List of creatives associated with campaign
           type: array
@@ -1400,7 +1331,7 @@ components:
         geo:
           type: array
           items:
-           type: string
+            type: string
         blockedPubs:
           type: array
           items:
@@ -1452,7 +1383,6 @@ components:
           type: string
         allowTrafficDiversion:
           type: integer
-    
     AdvertiserCampaignData:
       type: object
       properties:
@@ -1472,7 +1402,6 @@ components:
               default: 100
             nextPageToken:
               type: string
-
     FindAllCampaignError:
       type: object
       properties:
@@ -1495,7 +1424,6 @@ components:
               description: Error message
               type: string
               example: API Key supplied with the request is invalid. Please cross verify the API Key!
-
   securitySchemes:
     API Key:
       type: apiKey
