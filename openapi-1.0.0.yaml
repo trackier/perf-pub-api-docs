@@ -1148,7 +1148,6 @@ components:
                 enum:
                   - active
                   - pending
-                  - future
                   - expired
               type:
                 type: string
@@ -1166,6 +1165,7 @@ components:
         pageToken:
           type: string
           description: Token to access next page
+      description: ''
     PublisherDealData:
       type: object
       properties:
