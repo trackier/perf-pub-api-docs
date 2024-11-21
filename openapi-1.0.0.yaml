@@ -520,6 +520,47 @@ paths:
           name: end
           description: Report end date in YYYY-MM-DD format
           required: true
+        - schema:
+            type: string
+          in: query
+          name: click_id
+          description: Click Id
+        - schema:
+            type: string
+          in: query
+          name: p1
+          description: P1
+        - schema:
+            type: string
+          in: query
+          name: p2
+          description: P2
+        - schema:
+            type: string
+          in: query
+          name: p3
+          description: P3
+        - schema:
+            type: string
+          in: query
+          name: p4
+          description: P4
+        - schema:
+            type: string
+          in: query
+          name: p5
+          description: P5
+        - schema:
+            type: string
+            enum:
+              - approved
+              - pending
+              - cancelled
+              - rejected
+          in: query
+          name: status
+          allowReserved: false
+          description: Conversion Status
       security:
         - API Key: []
   /v2/publishers/reports-kpi:
