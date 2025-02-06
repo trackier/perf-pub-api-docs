@@ -166,6 +166,12 @@ paths:
           description: Token to traverse through paginated data (returns first page if not passed)
           schema:
             type: string
+        - schema:
+            type: string
+            example: '&adid=123'
+          in: query
+          name: adid
+          description: To filter coupons with their campaign Id
       responses:
         '200':
           description: Successful operation
