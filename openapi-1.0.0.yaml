@@ -170,8 +170,8 @@ paths:
             type: string
             example: '&adid=123'
           in: query
-          name: adid
           description: To filter coupons with their campaign Id
+          name: campaign_id
       responses:
         '200':
           description: Successful operation
