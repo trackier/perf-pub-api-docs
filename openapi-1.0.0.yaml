@@ -168,7 +168,7 @@ paths:
             type: string
         - schema:
             type: string
-            example: '&adid=123'
+            example: '&campaign_id=123'
           in: query
           description: To filter coupons with their campaign Id
           name: campaign_id
