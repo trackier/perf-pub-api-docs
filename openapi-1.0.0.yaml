@@ -964,6 +964,12 @@ components:
             lifetime:
               type: number
               example: 0
+        landingPage:
+          type: array
+          x-stoplight:
+            id: m8hwru1vjpp0z
+          items:
+            $ref: '#/components/schemas/LandingPage'
     Error:
       type: object
       properties:
@@ -1069,6 +1075,10 @@ components:
               format: integer
               description: Total number of campaigns
               example: 251
+        '':
+          type: string
+          x-stoplight:
+            id: bz1kzxbnzgncx
     PublisherCouponCodeData:
       type: object
       properties:
@@ -1162,6 +1172,144 @@ components:
               description: Error message
               type: string
               example: API Key supplied with the request is invalid. Please cross verify the API Key!
+    LandingPage:
+      title: LandingPage
+      x-stoplight:
+        id: 2hiq0czt32efb
+      type: object
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: j6w1fdgp8m1za
+          example: '123'
+        oid:
+          type: string
+          x-stoplight:
+            id: 2c1pfo8yifb0j
+          example: '123'
+        adid:
+          type: string
+          x-stoplight:
+            id: gcrshuxkpdkzm
+          example: '123'
+        display_id:
+          type: integer
+          x-stoplight:
+            id: 53g0w32w1lf3e
+          example: 2
+        title:
+          type: string
+          x-stoplight:
+            id: n710evkhnf4tl
+          example: test
+        preview_link:
+          type: string
+          x-stoplight:
+            id: qh8cdf8ahuaqg
+          example: 'https://example.com'
+        url:
+          type: string
+          x-stoplight:
+            id: ywjq5pzvrkkle
+          example: 'https://example.com'
+        impression_url:
+          type: string
+          x-stoplight:
+            id: uysjszgwg8kty
+          example: 'https://example.com'
+        status:
+          type: string
+          x-stoplight:
+            id: z09w3kn87eb36
+          example: active
+        rule_var:
+          type: string
+          x-stoplight:
+            id: uc6k9gambqlgd
+        pre_landing:
+          type: string
+          x-stoplight:
+            id: 83gpv0om21473
+          example: 'https://example.com'
+        rule_value:
+          type: string
+          x-stoplight:
+            id: o4hd68todbmom
+          example: '2'
+        cap_exceeded:
+          type: integer
+          x-stoplight:
+            id: vpbhn8lkdpqee
+          example: 1
+        end_hour:
+          type: integer
+          x-stoplight:
+            id: gc77l76s1vupy
+        start_hour:
+          type: integer
+          x-stoplight:
+            id: 9m7k5tghvsyzd
+        lp_zone:
+          type: string
+          x-stoplight:
+            id: jq405ko362hbn
+        pubs:
+          type: string
+          x-stoplight:
+            id: t2qi2a4m9e61n
+        pids:
+          type: array
+          x-stoplight:
+            id: nch743ks38ku9
+          items:
+            x-stoplight:
+              id: q4y4lzc8h3xqu
+            type: string
+        os_version:
+          type: object
+          x-stoplight:
+            id: cslitztmzn6ep
+          properties:
+            android:
+              type: object
+              x-stoplight:
+                id: 9rt6cryfpqj02
+              properties:
+                min:
+                  type: string
+                  x-stoplight:
+                    id: caqzr5r4bq05g
+                max:
+                  type: string
+                  x-stoplight:
+                    id: 7wrwa44stscs2
+            ios:
+              type: object
+              x-stoplight:
+                id: ludh276sbwwie
+              properties:
+                min:
+                  type: string
+                  x-stoplight:
+                    id: rz9ro9zu4tj5d
+                max:
+                  type: string
+                  x-stoplight:
+                    id: 1k2sk1lvccrjz
+        urls:
+          type: object
+          x-stoplight:
+            id: c5rl8o5yjkug6
+          properties:
+            url:
+              type: string
+              x-stoplight:
+                id: 5c3zqmpmgjqay
+            percent:
+              type: integer
+              x-stoplight:
+                id: ad06v59de71wk
   securitySchemes:
     API Key:
       type: apiKey
