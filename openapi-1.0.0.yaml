@@ -1188,7 +1188,7 @@ components:
           x-stoplight:
             id: n710evkhnf4tl
           example: test
-        trracking_link:
+        tracking_link:
           type: string
           x-stoplight:
             id: g5psztc3e5e2a
