@@ -99,6 +99,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  '/v2/publisher/campaign/{id}':
+    get:
+      tags:
+        - Campaign
+      summary: Fetch A Single Campaign
+      description: |-
+        Returns a single publisher campaign
+
+        **Rate Limit: 5 req/sec**
+      operationId: campaign
+      parameters:
+        - in: query
+          name: apiKey
+          description: Publisher API Key
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublisherCampaignData'
+        '400':
+          description: Invalid API Key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-stoplight:
+        id: yar8n0k9ww166
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
   /v2/publishers/profile:
     get:
       tags:
@@ -1062,23 +1099,21 @@ components:
           type: object
           properties:
             campaigns:
+              x-stoplight:
+                id: 4bqf4bdk5dk91
               type: array
               items:
                 $ref: '#/components/schemas/PublisherCampaign'
             page:
               type: number
-              format: integer
-              description: Current retrieved page
+              x-stoplight:
+                id: jemqfnuwhkr3q
               example: 1
             count:
               type: number
-              format: integer
-              description: Total number of campaigns
+              x-stoplight:
+                id: 03pnmvbj3j29p
               example: 251
-        '':
-          type: string
-          x-stoplight:
-            id: bz1kzxbnzgncx
     PublisherCouponCodeData:
       type: object
       properties:
