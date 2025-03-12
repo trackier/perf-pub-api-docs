@@ -121,7 +121,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PublisherCampaignData'
+                $ref: '#/components/schemas/PublisherSingleCampaignData'
         '400':
           description: Invalid API Key
           content:
@@ -1114,6 +1114,21 @@ components:
               x-stoplight:
                 id: 03pnmvbj3j29p
               example: 251
+    PublisherSingleCampaignData:
+      type: object
+      x-stoplight:
+        id: s0ek1nssw6pzj
+      title: PublisherSingleCampaignData
+      properties:
+        success:
+          type: boolean
+          description: Response status
+          example: true
+        data:
+          type: object
+          properties:
+            campaigns:
+              $ref: '#/components/schemas/PublisherCampaign'
     PublisherCouponCodeData:
       type: object
       properties:
