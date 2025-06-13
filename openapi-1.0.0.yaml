@@ -1136,6 +1136,7 @@ components:
               $ref: '#/components/schemas/PublisherCampaign'
     PublisherCouponCodeData:
       type: object
+      x-internal: false
       properties:
         coupons:
           type: array
@@ -1166,14 +1167,35 @@ components:
                 type: string
               campaign_id:
                 type: number
+              start:
+                type: string
+                format: date-time
+                x-stoplight:
+                  id: ng41g6v5o08rz
+              end:
+                type: string
+                format: date-time
+                x-stoplight:
+                  id: 2l8v7ppmbbs0j
               created:
                 type: string
                 format: date-time
         pageToken:
           type: string
           description: Token to access next page
-      x-internal: false
-      description: ''
+      x-examples:
+        Example 1:
+          coupons:
+            - id: 684c05b5b43ddb72eb065c76
+              code: test-start
+              status: active
+              type: exclusive
+              campaign_name: unix ts test
+              campaign_id: 22180
+              start: '2025-06-03T00:00:00.000Z'
+              end: '2025-06-26T00:00:00.000Z'
+              created: '2025-06-13T11:04:21.514Z'
+          pageToken: string
     PublisherDealData:
       type: object
       properties:
