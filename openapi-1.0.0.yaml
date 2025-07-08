@@ -91,6 +91,15 @@ paths:
           in: query
           name: 'categories[]'
           description: Category names
+        - schema:
+            type: integer
+            enum:
+              - 1
+              - 0
+            example: '&showApproved=1'
+          in: query
+          name: showApproved
+          description: Show Approved Offers
       responses:
         '200':
           description: Successful operation
