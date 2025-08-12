@@ -717,6 +717,189 @@ paths:
         - Campaign
       security:
         - API Key: []
+  /v2/publishers/bulk-deeplink:
+    post:
+      summary: Generate Deeplink
+      operationId: Publisher-Deeplink-Generate
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  deeplinks:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        campaign:
+                          type: integer
+                        url:
+                          type: string
+                x-examples:
+                  Example 1:
+                    success: true
+                    message: Deeplinks generated successfully
+                    deeplinks:
+                      - campaign: 2217
+                        url: 'https://test11.gotrackier.com/click?campaign_id=2217&pub_id=656&url=https://www.google.com&p1={p1}'
+              examples:
+                Example 1:
+                  value:
+                    success: true
+                    message: string
+                    deeplinks:
+                      - campaign: 123
+                        url: 'https://test11.gotrackier.com/click?campaign_id=123&pub_id=456&url=https://www.example.com&p1={p1}'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        statusCode:
+                          type: integer
+                        code:
+                          type: string
+                        codeMsg:
+                          type: string
+                        message:
+                          type: string
+                x-examples:
+                  Example 1:
+                    success: false
+                    errors:
+                      - statusCode: 400
+                        code: '107'
+                        codeMsg: VALIDATION_ERROR
+                        message: '"url" is required'
+      description: Use this endpoint to generate deeplink in bulk.
+      tags:
+        - Campaign
+      security:
+        - API Key: []
+      x-stoplight:
+        id: evix17o7gq81n
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              x-examples:
+                Example 1:
+                  deeplinks:
+                    - url: 'https://www.google.com'
+                      campaignIds:
+                        - '2217'
+                  adnParams:
+                    p1: '{p1}'
+                  encodeURL: false
+              required:
+                - deeplinks
+              properties:
+                deeplinks:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - url
+                    properties:
+                      url:
+                        type: string
+                      campaignIds:
+                        type: array
+                        items:
+                          type: string
+                adnParams:
+                  type: object
+                  properties:
+                    p1:
+                      type: string
+                    p2:
+                      type: string
+                      x-stoplight:
+                        id: bs86bwdm9fmeq
+                    p3:
+                      type: string
+                      x-stoplight:
+                        id: i00bjna1865c2
+                    p4:
+                      type: string
+                      x-stoplight:
+                        id: zwuz9yowo6o8v
+                    p5:
+                      type: string
+                      x-stoplight:
+                        id: blsygxnzj1zzb
+                    p6:
+                      type: string
+                      x-stoplight:
+                        id: 9babxogo0ytzt
+                    p7:
+                      type: string
+                      x-stoplight:
+                        id: p07pizh115cgb
+                    p8:
+                      type: string
+                      x-stoplight:
+                        id: g4ytkbsiuhzse
+                    p9:
+                      type: string
+                      x-stoplight:
+                        id: 9j28z8b2oda75
+                    p10:
+                      type: string
+                      x-stoplight:
+                        id: hvscq7ztfmfg7
+                    p11:
+                      type: string
+                      x-stoplight:
+                        id: okgn1gdgsien8
+                    p12:
+                      type: string
+                      x-stoplight:
+                        id: evet66pssjxc6
+                    p13:
+                      type: string
+                      x-stoplight:
+                        id: hdvkccuet4ypc
+                    p14:
+                      type: string
+                      x-stoplight:
+                        id: nvdw65qk3z75f
+                    p15:
+                      type: string
+                      x-stoplight:
+                        id: 23iz0fipi0y9n
+                encodeURL:
+                  type: boolean
+                  default: false
+            examples:
+              Example 1:
+                value:
+                  deeplinks:
+                    - url: 'https://www.example.com'
+                      campaignIds:
+                        - '123'
+                  adnParams:
+                    p1: '{p1}'
+                  encodeURL: false
+        description: ''
+    parameters: []
 components:
   schemas:
     ApiResponse:
