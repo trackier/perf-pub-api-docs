@@ -756,7 +756,7 @@ paths:
                     message: string
                     deeplinks:
                       - campaign: 123
-                        url: 'https://test11.gotrackier.com/click?campaign_id=123&pub_id=456&url=https://www.example.com&p1={p1}'
+                        url: 'https://click-tracking.domain.com/click?campaign_id=123&pub_id=456&url=https://www.example.com&p1={p1}'
         '400':
           description: Bad Request
           content:
